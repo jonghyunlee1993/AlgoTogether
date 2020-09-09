@@ -7,7 +7,7 @@ import java.util.Stack;
  * 문제 링크 : https://www.acmicpc.net/problem/9093
  */
 
-public class reverseWord {
+public class ReverseWord {
     public static void main(String[] args) throws IOException {
         String input = "i am happy today";
         System.out.println(solution(input));
