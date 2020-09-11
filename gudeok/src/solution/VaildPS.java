@@ -1,6 +1,11 @@
 package solution;
 
 import java.io.*;
+import java.util.concurrent.Callable;
+
+/**
+ * 문제 링크 : https://www.acmicpc.net/problem/9012
+ */
 
 public class VaildPS {
     public static void main(String[] args) throws IOException {
@@ -32,6 +37,15 @@ public class VaildPS {
             }
         }
         return checkNumber == 0 ? "YES" : "NO";
+    }
+
+
+    public Callable<String> test() {
+        return new Callable<String>() {
+            @Override public String call() throws Exception {
+                return "test";
+            }
+        };
     }
 
 
