@@ -22,15 +22,9 @@ public class Josephus {
         }
 
         for(int i =0; i < peopleCount-1; i++) {
-//            System.out.println("*************************");
-//            System.out.println(queue);
-//            System.out.println("*************************");
             for(int j = 0; j < orderNumber-1; j++) {
                 queue.offer(queue.poll());
             }
-//            System.out.println("=========================");
-//            System.out.println(queue);
-//            System.out.println("=========================");
             sb.append(queue.poll() + ", ");
         }
         sb.append(queue.poll() + ">");
