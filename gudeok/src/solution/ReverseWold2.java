@@ -11,7 +11,7 @@ public class ReverseWold2 {
         solution();
     }
 
-    public static void solution() throws IOException {
+    private static void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -44,7 +44,7 @@ public class ReverseWold2 {
         bw.flush();
     }
 
-    public static void printStack(BufferedWriter bw , Stack<Character> stack) throws IOException {
+    private static void printStack(BufferedWriter bw , Stack<Character> stack) throws IOException {
         while(!stack.isEmpty()) {
             bw.write(stack.pop());
         }
