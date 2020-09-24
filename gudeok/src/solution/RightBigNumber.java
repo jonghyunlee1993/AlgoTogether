@@ -38,13 +38,10 @@ public class RightBigNumber {
             if(stack.isEmpty()) {
                 stack.push(i);
             }
-            System.out.println("=========================");
             System.out.println(stack);
             while(!stack.isEmpty() && inputNumbers[stack.peek()] < inputNumbers[i]) {
                 answer[stack.pop()] = inputNumbers[i];
-                System.out.println("*************************");
             }
-            System.out.println("=========================");
             stack.push(i);
         }
 
