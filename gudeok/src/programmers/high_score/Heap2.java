@@ -8,6 +8,11 @@ import java.util.*;
  */
 public class Heap2 {
 
+    public static void main(String[] args) {
+        int[][] jobs = {{0, 3}, {1, 9}, {2, 6}};
+        solution(jobs);
+    }
+
     private static class Job {
         int requestTime;
         int workingTime;
@@ -16,11 +21,6 @@ public class Heap2 {
             this.requestTime = requestTime;
             this.workingTime = workingTime;
         }
-    }
-
-    public static void main(String[] args) {
-        int[][] jobs = {{0, 3}, {1, 9}, {2, 6}};
-        solution(jobs);
     }
 
     public static void solution(int[][] jobs) {
@@ -60,11 +60,8 @@ public class Heap2 {
             } else {
                 time++;
             }
-            System.out.println("**********");
-            System.out.println(time);
-            System.out.println(answer);
         }
 
-//        System.out.println(answer/jobs.length);
+        System.out.println(answer/jobs.length);
     }
 }
