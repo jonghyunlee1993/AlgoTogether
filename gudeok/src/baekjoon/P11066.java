@@ -3,7 +3,6 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /***
@@ -38,13 +37,11 @@ public class P11066 {
                 }
             }
 
-            System.out.println(getMinimumCost(dp,pageFileSize,sum,1,pageCount));
+            System.out.println(getMinCost(dp, pageFileSize, sum, 1, pageCount));
         }
-
     }
 
-    private static int getMinimumCost(int[][] dp, int[] pageFileSize, int[] sum, int start, int end) {
-
+    private static int getMinCost(int[][] dp, int[] pageFileSize, int[] sum, int start, int end) {
         if (start >= end) {
             return 0;
         }
@@ -52,15 +49,12 @@ public class P11066 {
             return pageFileSize[start] + pageFileSize[end];
         }
         for (int i = start; i < end; i++) {
-            int temp = getMinimumCost(dp, pageFileSize, sum, start, i) + getMinimumCost(dp, pageFileSize, sum, i + 1, end) + sum[end] - sum[start - 1];
+            int temp = getMinCost(dp, pageFileSize, sum, start, i)
+                + getMinCost(dp, pageFileSize, sum, i + 1, end)
+                + sum[end] - sum[start - 1];
             dp[start][end] = Math.min(dp[start][end], temp);
         }
 
-//        System.out.println("==========");
-//        System.out.println(start);
-//        System.out.println(end);
-//        System.out.println(dp[start][end]);
-//        System.out.println("==========");
         return dp[start][end];
     }
 
