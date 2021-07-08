@@ -35,7 +35,6 @@ public class P1874 {
             stack.pop();
             answer.append("-").append("\n");
         }
-
         System.out.println(answer);
     }
 }
