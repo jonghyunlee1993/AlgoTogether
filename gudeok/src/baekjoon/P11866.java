@@ -38,7 +38,5 @@ public class P11866 {
 
         answer.append(queue.poll()).append(">");
         System.out.println(answer);
-
-
     }
 }
