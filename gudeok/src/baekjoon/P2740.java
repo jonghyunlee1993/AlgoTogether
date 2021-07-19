@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
  * 참고 : 분할 정복
  */
 public class P2740 {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder answer = new StringBuilder();
@@ -58,8 +57,5 @@ public class P2740 {
             answer.append('\n');
         }
         System.out.println(answer);
-
     }
-
-
 }
