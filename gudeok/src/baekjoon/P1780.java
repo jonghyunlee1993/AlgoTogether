@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  * 참고 : 분할 정복
  */
 public class P1780 {
-    
+
     private static int[][] paper;
     private static int minusOnePaperCount;
     private static int zeroPaperCount;
