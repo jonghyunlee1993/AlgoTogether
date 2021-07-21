@@ -3,7 +3,6 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 
 /***
  * 문제번호 : 11444
