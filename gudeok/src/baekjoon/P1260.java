@@ -3,84 +3,78 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+
 import java.util.Queue;
 import java.util.StringTokenizer;
-import java.util.TreeMap;
 
 /***
  * 문제번호 : 1260
  * 문제 타이틀 : DFS와 BFS
- * 정답비율 : 33.882%
+ * 정답비율 : 34.163%
  * 문제 링크 : https://www.acmicpc.net/problem/1260
- * 참고 : DFS/BFS
+ * 참고 : DFS와 BFS
  */
 public class P1260 {
 
-    static int map[][];
-    static boolean visit[];
-    static ArrayList<TreeMap<Integer, Integer>> arrayList;
+    static int[][] graph;
+    static boolean[] visited = new boolean[1001];
+    static int vertexCount, edgeCount;
     static StringBuilder answer = new StringBuilder();
+    static Queue<Integer> queue = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        int vertex = Integer.parseInt(st.nextToken());
-        int edge = Integer.parseInt(st.nextToken());
-        int startNumber = Integer.parseInt(st.nextToken());
-        map = new int[vertex + 1][vertex + 1];
-        visit = new boolean[vertex + 1];
-        arrayList = new ArrayList<>();
+        vertexCount = Integer.parseInt(st.nextToken());
+        edgeCount = Integer.parseInt(st.nextToken());
+        int startVertex = Integer.parseInt(st.nextToken());
+        graph = new int[vertexCount + 1][vertexCount + 1];
 
-        for (int j = 0; j < vertex + 1; j++) {
-            Arrays.fill(map[j], 0);
-            arrayList.add(new TreeMap<Integer, Integer>());
-        }
-        Arrays.fill(visit, false);
-
-        for (int i = 0; i < edge; i++) {
+        for (int i = 0; i < edgeCount; i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            int link1 = Integer.parseInt(st.nextToken());
-            int link2 = Integer.parseInt(st.nextToken());
-            map[link1][link2] = 1;
-            map[link2][link1] = 1;
-            arrayList.get(link1).put(link2, link1);
-            arrayList.get(link2).put(link1, link2);
+            int node1 = Integer.parseInt(st.nextToken());
+            int node2 = Integer.parseInt(st.nextToken());
+
+            graph[node1][node2] = 1;
+            graph[node2][node1] = 1;
         }
 
-        dfs(startNumber);
+        dfs(startVertex);
         answer.append("\n");
-        Arrays.fill(visit, false);
-        bfs(startNumber, vertex);
+        Arrays.fill(visited, false);
+
+        bfs(startVertex);
         System.out.println(answer);
     }
 
-    private static void dfs(int startNumber) {
-        visit[startNumber] = true;
-        answer.append(startNumber).append(" ");
-        TreeMap<Integer, Integer> treemap = arrayList.get(startNumber);
-        for (int i : treemap.keySet()) {
-            if (visit[i] == false) {
-                dfs(i);
-            }
-        }
-    }
+    private static void bfs(int startVertex) {
+        queue.add(startVertex);
+        visited[startVertex] = true;
 
-    private static void bfs(int startNumber, int vertex) {
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(startNumber);
-        visit[startNumber] = true;
         while (!queue.isEmpty()) {
-            int number = queue.poll();
-            answer.append(number).append(" ");
-            for (int i = 0; i <= vertex; i++) {
-                if (map[number][i] == 1 && visit[i] == false) {
-                    queue.offer(i);
-                    visit[i] = true;
+             startVertex = queue.poll();
+            answer.append(startVertex).append(" ");
+
+            for (int i = 1; i <= vertexCount; i++) {
+                if (graph[startVertex][i] == 1 && !visited[i]) {
+                    queue.add(i);            //모든 값을 q에 넣고, 겉 while문으로 반복
+                    visited[i] = true;
                 }
             }
         }
+        queue.clear();
+    }
+
+    private static void dfs(int startVertex) {
+        visited[startVertex] = true;
+        answer.append(startVertex).append(" ");
+        for (int i = 1; i <= vertexCount; i++) {
+            if (graph[startVertex][i] == 1 && !visited[i]) {
+                dfs(i);
+            }
+        }
+
     }
 }
